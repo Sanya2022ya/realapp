@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Депозиты пользователя</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Депозиты пользователя</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Сумма</th>
+            <th>Валюта</th>
+            <th>Срок действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="deposit : ${deposits}">
+            <td th:text="${deposit.id}"></td>
+            <td th:text="${deposit.amount}"></td>
+            <td th:text="${deposit.currency}"></td>
+            <td th:text="${deposit.expirationDate}"></td> <!-- Обновлено -->
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/deposits/new(userId=${userId})}">Добавить новый депозит</a>
+</div>
+</body>
+</html>
